@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		705DC46E6B781FB510F866E6 /* Pods_nanny_near_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */; };
 		9884F93225A283D30022FD9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884F93125A283D30022FD9A /* AppDelegate.swift */; };
 		9884F93425A283D30022FD9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884F93325A283D30022FD9A /* SceneDelegate.swift */; };
 		9884F93925A283D30022FD9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9884F93725A283D30022FD9A /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C00B930C210E67A682461E7 /* Pods-nanny-near-me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.debug.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.debug.xcconfig"; sourceTree = "<group>"; };
+		970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.release.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.release.xcconfig"; sourceTree = "<group>"; };
 		9884F92E25A283D30022FD9A /* nanny-near-me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nanny-near-me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9884F93125A283D30022FD9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9884F93325A283D30022FD9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		9884F93A25A283D60022FD9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9884F93D25A283D60022FD9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9884F93F25A283D60022FD9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nanny_near_me.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				705DC46E6B781FB510F866E6 /* Pods_nanny_near_me.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		031724EAF68CBB8A611AB031 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9884F92525A283D30022FD9A = {
 			isa = PBXGroup;
 			children = (
 				9884F93025A283D30022FD9A /* nanny-near-me */,
 				9884F92F25A283D30022FD9A /* Products */,
+				E35C42A9F143031CC6A6960D /* Pods */,
+				031724EAF68CBB8A611AB031 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,16 @@
 			path = "nanny-near-me";
 			sourceTree = "<group>";
 		};
+		E35C42A9F143031CC6A6960D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C00B930C210E67A682461E7 /* Pods-nanny-near-me.debug.xcconfig */,
+				970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9884F94225A283D60022FD9A /* Build configuration list for PBXNativeTarget "nanny-near-me" */;
 			buildPhases = (
+				1D71E1A0AE0B0427196751A6 /* [CP] Check Pods Manifest.lock */,
 				9884F92A25A283D30022FD9A /* Sources */,
 				9884F92B25A283D30022FD9A /* Frameworks */,
 				9884F92C25A283D30022FD9A /* Resources */,
+				3BD93FAC09DFFE16F962EA6F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D71E1A0AE0B0427196751A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nanny-near-me-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3BD93FAC09DFFE16F962EA6F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9884F92A25A283D30022FD9A /* Sources */ = {
@@ -278,6 +347,7 @@
 		};
 		9884F94325A283D60022FD9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C00B930C210E67A682461E7 /* Pods-nanny-near-me.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,6 +365,7 @@
 		};
 		9884F94425A283D60022FD9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
