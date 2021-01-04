@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		98679E2A25A3BABA000C3AE8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98679E2925A3BABA000C3AE8 /* LoginController.swift */; };
 		9884F93225A283D30022FD9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884F93125A283D30022FD9A /* AppDelegate.swift */; };
 		9884F93425A283D30022FD9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884F93325A283D30022FD9A /* SceneDelegate.swift */; };
 		9884F93925A283D30022FD9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9884F93725A283D30022FD9A /* Main.storyboard */; };
@@ -16,7 +15,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		98679E2925A3BABA000C3AE8 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9884F92E25A283D30022FD9A /* nanny-near-me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nanny-near-me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9884F93125A283D30022FD9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9884F93325A283D30022FD9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,42 +35,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		98679E2425A3BA29000C3AE8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		98679E2525A3BA32000C3AE8 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		98679E2625A3BA3A000C3AE8 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				98679E2925A3BABA000C3AE8 /* LoginController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		98679E2725A3BA44000C3AE8 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		98679E2825A3BA4D000C3AE8 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		9884F92525A283D30022FD9A = {
 			isa = PBXGroup;
 			children = (
@@ -92,11 +54,6 @@
 		9884F93025A283D30022FD9A /* nanny-near-me */ = {
 			isa = PBXGroup;
 			children = (
-				98679E2825A3BA4D000C3AE8 /* Utils */,
-				98679E2725A3BA44000C3AE8 /* Service */,
-				98679E2625A3BA3A000C3AE8 /* Controller */,
-				98679E2525A3BA32000C3AE8 /* View */,
-				98679E2425A3BA29000C3AE8 /* Model */,
 				9884F93125A283D30022FD9A /* AppDelegate.swift */,
 				9884F93325A283D30022FD9A /* SceneDelegate.swift */,
 				9884F93725A283D30022FD9A /* Main.storyboard */,
@@ -179,7 +136,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9884F93225A283D30022FD9A /* AppDelegate.swift in Sources */,
-				98679E2A25A3BABA000C3AE8 /* LoginController.swift in Sources */,
 				9884F93425A283D30022FD9A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
