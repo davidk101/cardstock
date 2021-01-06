@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		705DC46E6B781FB510F866E6 /* Pods_nanny_near_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */; };
+		98679E3025A53EC4000C3AE8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98679E2F25A53EC4000C3AE8 /* GradientView.swift */; };
 		9884F93225A283D30022FD9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884F93125A283D30022FD9A /* AppDelegate.swift */; };
 		9884F93425A283D30022FD9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884F93325A283D30022FD9A /* SceneDelegate.swift */; };
 		9884F93925A283D30022FD9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9884F93725A283D30022FD9A /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		5C00B930C210E67A682461E7 /* Pods-nanny-near-me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.debug.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.debug.xcconfig"; sourceTree = "<group>"; };
 		970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.release.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.release.xcconfig"; sourceTree = "<group>"; };
+		98679E2F25A53EC4000C3AE8 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9884F92E25A283D30022FD9A /* nanny-near-me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nanny-near-me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9884F93125A283D30022FD9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9884F93325A283D30022FD9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +50,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		98679E2C25A53E89000C3AE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		98679E2D25A53E8D000C3AE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98679E2F25A53EC4000C3AE8 /* GradientView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		98679E2E25A53E92000C3AE8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		9884F92525A283D30022FD9A = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +93,9 @@
 		9884F93025A283D30022FD9A /* nanny-near-me */ = {
 			isa = PBXGroup;
 			children = (
+				98679E2E25A53E92000C3AE8 /* Controller */,
+				98679E2D25A53E8D000C3AE8 /* View */,
+				98679E2C25A53E89000C3AE8 /* Model */,
 				9884F93125A283D30022FD9A /* AppDelegate.swift */,
 				9884F93325A283D30022FD9A /* SceneDelegate.swift */,
 				9884F93725A283D30022FD9A /* Main.storyboard */,
@@ -85,7 +112,6 @@
 				5C00B930C210E67A682461E7 /* Pods-nanny-near-me.debug.xcconfig */,
 				970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -206,6 +232,7 @@
 			files = (
 				9884F93225A283D30022FD9A /* AppDelegate.swift in Sources */,
 				9884F93425A283D30022FD9A /* SceneDelegate.swift in Sources */,
+				98679E3025A53EC4000C3AE8 /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
