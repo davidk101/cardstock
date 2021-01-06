@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		705DC46E6B781FB510F866E6 /* Pods_nanny_near_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */; };
 		98679E3025A53EC4000C3AE8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98679E2F25A53EC4000C3AE8 /* GradientView.swift */; };
+		98757BA425A5430C00D61715 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98757BA325A5430C00D61715 /* ViewController.swift */; };
+		98757BA625A5467200D61715 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98757BA525A5467200D61715 /* RoundImageView.swift */; };
+		98757BA825A5477000D61715 /* RoundedShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98757BA725A5477000D61715 /* RoundedShadow.swift */; };
 		9884F93225A283D30022FD9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884F93125A283D30022FD9A /* AppDelegate.swift */; };
 		9884F93425A283D30022FD9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884F93325A283D30022FD9A /* SceneDelegate.swift */; };
 		9884F93925A283D30022FD9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9884F93725A283D30022FD9A /* Main.storyboard */; };
@@ -20,6 +23,9 @@
 		5C00B930C210E67A682461E7 /* Pods-nanny-near-me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.debug.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.debug.xcconfig"; sourceTree = "<group>"; };
 		970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.release.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.release.xcconfig"; sourceTree = "<group>"; };
 		98679E2F25A53EC4000C3AE8 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		98757BA325A5430C00D61715 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		98757BA525A5467200D61715 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
+		98757BA725A5477000D61715 /* RoundedShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadow.swift; sourceTree = "<group>"; };
 		9884F92E25A283D30022FD9A /* nanny-near-me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nanny-near-me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9884F93125A283D30022FD9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9884F93325A283D30022FD9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				98679E2F25A53EC4000C3AE8 /* GradientView.swift */,
+				98757BA525A5467200D61715 /* RoundImageView.swift */,
+				98757BA725A5477000D61715 /* RoundedShadow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,6 +107,7 @@
 				9884F93125A283D30022FD9A /* AppDelegate.swift */,
 				9884F93325A283D30022FD9A /* SceneDelegate.swift */,
 				9884F93725A283D30022FD9A /* Main.storyboard */,
+				98757BA325A5430C00D61715 /* ViewController.swift */,
 				9884F93A25A283D60022FD9A /* Assets.xcassets */,
 				9884F93C25A283D60022FD9A /* LaunchScreen.storyboard */,
 				9884F93F25A283D60022FD9A /* Info.plist */,
@@ -230,8 +239,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98757BA625A5467200D61715 /* RoundImageView.swift in Sources */,
 				9884F93225A283D30022FD9A /* AppDelegate.swift in Sources */,
 				9884F93425A283D30022FD9A /* SceneDelegate.swift in Sources */,
+				98757BA825A5477000D61715 /* RoundedShadow.swift in Sources */,
+				98757BA425A5430C00D61715 /* ViewController.swift in Sources */,
 				98679E3025A53EC4000C3AE8 /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

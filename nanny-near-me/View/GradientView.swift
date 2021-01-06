@@ -19,7 +19,7 @@ class GradientView: UIView  {
     
     func setupGradientView(){
         
-        gradient.frame = self.bounds
+        gradient.frame = self.bounds // takes up its own UIView frame
         gradient.colors = [UIColor.white.cgColor, UIColor.init(white: 1.0, alpha: 0.0).cgColor]
         gradient.startPoint = CGPoint.zero // top-left point of simulator 
         gradient.endPoint = CGPoint(x:0 ,y:1) // covers the entire view vertically
