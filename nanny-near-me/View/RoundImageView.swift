@@ -14,7 +14,6 @@ class RoundImageView: UIImageView {
         setupView()
     }
     
-
     func setupView(){
         
         self.layer.cornerRadius = self.frame.width / 2 // making imageView to be circular

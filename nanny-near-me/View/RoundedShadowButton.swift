@@ -29,7 +29,7 @@ class RoundedShadowButton: UIButton {
     func animateButton(shouldLoad: Bool, withMessage message: String?){
         
         let spinner = UIActivityIndicatorView()
-        spinner.style = .medium
+        spinner.style = .large
         spinner.color = UIColor.darkGray
         spinner.alpha = 0.0
         spinner.hidesWhenStopped = true
@@ -65,6 +65,7 @@ class RoundedShadowButton: UIButton {
             self.isUserInteractionEnabled = false // ensures button is unclickable
             
         }
+        
         else{
             self.isUserInteractionEnabled = true
             
@@ -78,7 +79,7 @@ class RoundedShadowButton: UIButton {
             UIView.animate(withDuration: 0.2) {
                 self.layer.cornerRadius = 5.0
                 self.frame = self.originalSize! // force unwrapping here since it is an optional - SELF.originalSize needed to refer to correct var outside closure
-                self.setTitle(message, for: .normal)
+                self.setTitle(message, for: .normal)// adding title back
                 
             }
             

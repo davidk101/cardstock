@@ -24,6 +24,7 @@ class GradientView: UIView  {
         gradient.startPoint = CGPoint.zero // top-left point of simulator 
         gradient.endPoint = CGPoint(x:0 ,y:1) // covers the entire view vertically
         gradient.locations = [0.8, 1.0] // first color takes 0-80% of UIView and second color takes 80-100% of view
-        self.layer.addSublayer(gradient)
+        //self.layer.addSublayer(gradient)
+        layer.insertSublayer(gradient, at: 0)// source stackoverflow.com/questions/20243424/add-calayer-below-uiview
     }
 }
