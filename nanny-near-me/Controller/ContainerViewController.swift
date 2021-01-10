@@ -7,24 +7,27 @@
 //
 
 import UIKit
+import QuartzCore // animates VC sliding
 
 class ContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+}
+
+private extension UIStoryboard{ // access all VC from the storyboard and instantiate them dynamically
+    
+    class func mainStoryboard() -> UIStoryboard{ // modifies storyboard dynamically
+        return UIStoryboard(name: "Main", bundle: Bundle.main) // accesses storyboard
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    class func MenuViewController() -> MenuViewController?{ // returns an instance of MenuVC
+        return mainStoryboard().instantiateInitialViewController() as? MenuViewController // optionally casting as MenuVC
     }
-    */
-
+    
+    class func HomeViewController() -> HomeViewController?{
+        return mainStoryboard().instantiateInitialViewController() as? HomeViewController
+    }
 }
