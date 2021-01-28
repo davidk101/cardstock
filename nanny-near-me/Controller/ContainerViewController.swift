@@ -64,6 +64,14 @@ class ContainerViewController: UIViewController {
         centerController.didMove(toParent: self) // moved to parent controller
         
     }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation{
+        return UIStatusBarAnimation.slide
+    }
+    
+    override var prefersStatusBarHidden: Bool{
+        return isHidden
+    }
 }
 
 // conforming to protocol
@@ -108,21 +116,63 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
             setupWhiteCoverView()
             
             currentState = .expanded
+            
+            animateCenterPanelXPosition(targetPosition: centerController.view.frame.width - centerPanelExpandedOffset) // captures width of screen and slides the X point on the left of the screen 160 pixels to the right
         }
         else{
+            
             isHidden = !isHidden
             animateStatusBar()
             hideWhiteCoverView()
+            
+            animateCenterPanelXPosition(targetPosition: 0) { (finished) in
+                if finished == true{
+                    self.currentState = .collapsed
+                    self.menuVC = nil // removing instance of VC from memory
+                }
+            }
+            
         }
         
     }
     
-    func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ){
+    func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil){
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.centerController.view.frame.origin.x = targetPosition
         }, completion: completion)
         
+    }
+    
+    func setupWhiteCoverView(){ // create UIView, add as subview
+        
+        let whiteCoverView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)) // covers entire view
+        whiteCoverView.alpha = 0.0
+        whiteCoverView.backgroundColor = UIColor.white
+        whiteCoverView.tag = 25 // arbitrary tag to identify
+        self.centerController.view.addSubview(whiteCoverView)
+        
+        UIView.animate(withDuration: 0.2) {
+            whiteCoverView.alpha = 0.75
+        }
+        
+    }
+    
+    func hideWhiteCoverView(){
+        
+        for subview in self.centerController.view.subviews{
+            if subview.tag == 25{
+                UIView.animate(withDuration: 0.2) {
+                    subview.alpha = 0.0
+                }
+            }
+        }
+    }
+    
+    func animateStatusBar(){ // status bar is the HomeVC essentially
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.setNeedsStatusBarAppearanceUpdate() // in-built function
+        })
     }
     
 }
