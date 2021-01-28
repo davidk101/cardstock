@@ -32,6 +32,8 @@ class ContainerViewController: UIViewController {
     var isHidden = false // the status of the HomeVC
     let centerPanelExpandedOffset: CGFloat = 160 // determines how far the panel should expand
     
+    var tap: UITapGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initCenter(screen: showVC)
@@ -74,8 +76,8 @@ class ContainerViewController: UIViewController {
     }
 }
 
-// conforming to protocol
-extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits from ContainerVCDelegate
+// conforming to protocol | functionality for delegate is stored in this extension
+extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits from CenterVCDelegate
     
     func toggleLeftPanel() { // expands or closes as needed
         
@@ -107,7 +109,7 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
         
     }
     
-    func animateLeftPanel(shouldExpand: Bool) { // add shadow to the other VC and slide current VC to the right
+    @objc func animateLeftPanel(shouldExpand: Bool) { // add shadow to the other VC and slide current VC to the right
         
         if shouldExpand{
             isHidden = !isHidden // inverts value when expanded
@@ -156,16 +158,34 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
             whiteCoverView.alpha = 0.75
         }
         
+        tap = UITapGestureRecognizer(target: self, action: #selector(animateLeftPanel(shouldExpand:)) ) // self: current VC
+        
+        self.centerController.view.addGestureRecognizer(tap)
+        
     }
     
     func hideWhiteCoverView(){
         
+        centerController.view.removeGestureRecognizer(tap)
         for subview in self.centerController.view.subviews{
             if subview.tag == 25{
-                UIView.animate(withDuration: 0.2) {
-                    subview.alpha = 0.0
-                }
+                UIView.animate(withDuration: 0.2, animations: {
+                    subview.alpha = 0.0 // fade out first
+                }, completion: { (finished) in
+                    subview.removeFromSuperview() // removed after fading out
+                })
             }
+        }
+    }
+    
+    // adding a vertical shadow for the center controller to distinguish well from other VC
+    func shouldShowShadowForCenterViewController(status: Bool){
+        
+        if status{
+            centerController.view.layer.shadowOpacity = 0.6
+        }
+        else{
+            centerController.view.layer.shadowOpacity = 0.0
         }
     }
     

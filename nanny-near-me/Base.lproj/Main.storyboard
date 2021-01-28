@@ -92,6 +92,9 @@
                                 <rect key="frame" x="20" y="57" width="30" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="menuSliderBtn"/>
+                                <connections>
+                                    <action selector="menuBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IOb-cx-qlN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
