@@ -13,11 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private var containerVC = ContainerViewController()
+    fileprivate var containerVC = ContainerViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Override point for customization after application launch.
+        
+        containerVC = ContainerViewController()
         
         // changing rootViewController from HomeVC to ContainerVC
         window?.rootViewController = containerVC

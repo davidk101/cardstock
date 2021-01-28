@@ -8,6 +8,10 @@
 
 import UIKit
 
+// Delegation allows objects to be able to change their appearance / state based on dynamic changes
+// Delegation is often achieved by using protocols, since it allows the delegate object to be of any class
+// Delegation is also very useful when you want to pass information between objects. You can very easily create your own protocols and sign up your own objects to follow them
+
 protocol CenterVCDelegate{
     
     func toggleLeftPanel()

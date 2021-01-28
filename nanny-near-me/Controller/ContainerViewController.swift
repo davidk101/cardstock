@@ -17,22 +17,29 @@ enum SlideOutState{ // checks if menu is expanded or collapsed
 }
 
 enum ShowWhichVC{
-    case HomeViewController
+    //case HomeViewController
+    case homeVC
 }
 
-var showVC: ShowWhichVC = .HomeViewController // default VC shown when app launches is HomeViewController
+var showVC: ShowWhichVC = .homeVC // default VC shown when app launches is HomeViewController
 
 class ContainerViewController: UIViewController {
     
     var homeVC: HomeViewController!
     var menuVC: MenuViewController!
     var centerController: UIViewController!
-    var currentState: SlideOutState = .collapsed // menu collapsed initially
+    var currentState: SlideOutState = .collapsed{ // menu collapsed initially
+        didSet{
+            let shouldShowShadow = (currentState != .collapsed)
+            
+            shouldShowShadowForCenterViewController(status: shouldShowShadow)
+        }
+    }
     
     var isHidden = false // the status of the HomeVC
     let centerPanelExpandedOffset: CGFloat = 160 // determines how far the panel should expand
     
-    var tap: UITapGestureRecognizer!
+    var tap: UITapGestureRecognizer! // setting up to recognize tap on the white cover to close panel/menu
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +54,8 @@ class ContainerViewController: UIViewController {
         showVC  = screen
         
         if homeVC == nil{ // if not yet instantiated
-            homeVC = UIStoryboard.HomeViewController()
+            print("hello")
+            homeVC = UIStoryboard.homeViewController()
             homeVC.delegate = self // instantiate delegate to be containerVC
         }
         
@@ -81,22 +89,24 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
     
     func toggleLeftPanel() { // expands or closes as needed
         
+        print("dadd")
         let notAlreadyExpanded = (currentState != .expanded)
         
         if notAlreadyExpanded{ // if not yet expanded
             addLeftPanelViewController()
         }
         animateLeftPanel(shouldExpand: notAlreadyExpanded)
+        
+        print("hello1")
     }
     
     func addLeftPanelViewController() {
         
         // instantiate menuVC
         if menuVC == nil{
-            menuVC = UIStoryboard.MenuViewController()
+            menuVC = UIStoryboard.menuViewController()
             addChildSidePanelViewController(menuVC!)
         }
-        
         
     }
     
@@ -104,8 +114,6 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
         view.insertSubview(sidePanelController.view, at: 0)
         addChild(sidePanelController)
         sidePanelController.didMove(toParent: self)
-        
-        
         
     }
     
@@ -133,9 +141,7 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
                     self.menuVC = nil // removing instance of VC from memory
                 }
             }
-            
         }
-        
     }
     
     func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil){
@@ -143,7 +149,6 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.centerController.view.frame.origin.x = targetPosition
         }, completion: completion)
-        
     }
     
     func setupWhiteCoverView(){ // create UIView, add as subview
@@ -178,7 +183,7 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
         }
     }
     
-    // adding a vertical shadow for the center controller to distinguish well from other VC
+    // adding a vertical shadow for the current center controller to distinguish from other VC
     func shouldShowShadowForCenterViewController(status: Bool){
         
         if status{
@@ -197,18 +202,22 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
     
 }
 
+// private: only accessible by ContainerVC
 private extension UIStoryboard{ // access all VC from the storyboard and instantiate those VC dynamically
     
     class func mainStoryboard() -> UIStoryboard{ // modifies storyboard dynamically
+        print("hello1")
         return UIStoryboard(name: "Main", bundle: Bundle.main) // accesses Main.storyboard
     }
     
-    class func MenuViewController() -> MenuViewController?{ // returns an instance of MenuVC
-        return mainStoryboard().instantiateInitialViewController() as? MenuViewController // optionally casting as MenuVC
+    class func menuViewController() -> MenuViewController?{ // returns an instance of MenuVC
+        print("hello3")
+        return mainStoryboard().instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController // optionally casting as MenuVC
     }
     
-    class func HomeViewController() -> HomeViewController?{ // returns instance of HomeVC
-        return mainStoryboard().instantiateInitialViewController() as? HomeViewController
+    class func homeViewController() -> HomeViewController?{ // returns instance of HomeVC
+        print("hello2")
+        return mainStoryboard().instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
     }
 }
 
