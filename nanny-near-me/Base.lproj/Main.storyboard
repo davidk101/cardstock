@@ -33,7 +33,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="34"/>
-                                        <state key="normal" title="FIND A NANNY"/>
+                                        <state key="normal" title="FIND A HELPER"/>
                                         <connections>
                                             <action selector="actionBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6PB-gA-hRQ"/>
                                         </connections>
@@ -175,12 +175,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNv-gX-4WQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="681.15942028985512" y="22.767857142857142"/>
+            <point key="canvasLocation" x="686" y="49"/>
         </scene>
     </scenes>
     <resources>
         <image name="centerMapBtn" width="62" height="62"/>
-        <image name="logo" width="300" height="89"/>
+        <image name="logo" width="300" height="138"/>
         <image name="menuSliderBtn" width="30" height="24"/>
         <image name="noProfilePhoto" width="400" height="400"/>
     </resources>
