@@ -54,7 +54,6 @@ class ContainerViewController: UIViewController {
         showVC  = screen
         
         if homeVC == nil{ // if not yet instantiated
-            print("hello")
             homeVC = UIStoryboard.homeViewController()
             homeVC.delegate = self // instantiate delegate to be containerVC
         }
@@ -89,7 +88,6 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
     
     func toggleLeftPanel() { // expands or closes as needed
         
-        print("dadd")
         let notAlreadyExpanded = (currentState != .expanded)
         
         if notAlreadyExpanded{ // if not yet expanded
@@ -97,7 +95,6 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
         }
         animateLeftPanel(shouldExpand: notAlreadyExpanded)
         
-        print("hello1")
     }
     
     func addLeftPanelViewController() {
@@ -206,17 +203,14 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
 private extension UIStoryboard{ // access all VC from the storyboard and instantiate those VC dynamically
     
     class func mainStoryboard() -> UIStoryboard{ // modifies storyboard dynamically
-        print("hello1")
         return UIStoryboard(name: "Main", bundle: Bundle.main) // accesses Main.storyboard
     }
     
     class func menuViewController() -> MenuViewController?{ // returns an instance of MenuVC
-        print("hello3")
         return mainStoryboard().instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController // optionally casting as MenuVC
     }
     
     class func homeViewController() -> HomeViewController?{ // returns instance of HomeVC
-        print("hello2")
         return mainStoryboard().instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
     }
 }
