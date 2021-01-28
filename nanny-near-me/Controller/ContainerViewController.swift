@@ -34,6 +34,7 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initCenter(screen: showVC)
         
     }
     
@@ -91,7 +92,7 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
     
     func addChildSidePanelViewController(_ sidePanelController: MenuViewController){
         view.insertSubview(sidePanelController.view, at: 0)
-        addChildViewController(sidePanelController)
+        addChild(sidePanelController)
         sidePanelController.didMove(toParent: self)
         
         
@@ -100,6 +101,27 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
     
     func animateLeftPanel(shouldExpand: Bool) { // add shadow to the other VC and slide current VC to the right
         
+        if shouldExpand{
+            isHidden = !isHidden // inverts value when expanded
+            
+            animateStatusBar()
+            setupWhiteCoverView()
+            
+            currentState = .expanded
+        }
+        else{
+            isHidden = !isHidden
+            animateStatusBar()
+            hideWhiteCoverView()
+        }
+        
+    }
+    
+    func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ){
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.centerController.view.frame.origin.x = targetPosition
+        }, completion: completion)
         
     }
     
