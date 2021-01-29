@@ -1,0 +1,6 @@
+framework module Pods_nanny_near_me {
+  umbrella header "Pods-nanny-near-me-umbrella.h"
+
+  export *
+  module * { export * }
+}
