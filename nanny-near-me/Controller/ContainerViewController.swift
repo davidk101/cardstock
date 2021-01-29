@@ -156,9 +156,11 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
         whiteCoverView.tag = 25 // arbitrary tag to identify
         self.centerController.view.addSubview(whiteCoverView)
         
-        UIView.animate(withDuration: 0.2) {
-            whiteCoverView.alpha = 0.75
-        }
+        whiteCoverView.fadeTo(alphaValue: 0.75, withDuration: 0.2)
+        
+        //UIView.animate(withDuration: 0.2) {
+        //    whiteCoverView.alpha = 0.75
+        //}
         
         tap = UITapGestureRecognizer(target: self, action: #selector(animateLeftPanel(shouldExpand:)) ) // self: current VC
         
@@ -172,9 +174,9 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
         for subview in self.centerController.view.subviews{
             if subview.tag == 25{
                 UIView.animate(withDuration: 0.2, animations: {
-                    subview.alpha = 0.0 // fade out first
+                    subview.alpha = 0.0 // fade out happens first
                 }, completion: { (finished) in
-                    subview.removeFromSuperview() // removed after fading out
+                    subview.removeFromSuperview() // removed from supoer view after fading out
                 })
             }
         }
