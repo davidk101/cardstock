@@ -10,6 +10,7 @@
 		705DC46E6B781FB510F866E6 /* Pods_nanny_near_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */; };
 		9847CB7425C25C9700922CE0 /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7325C25C9700922CE0 /* CenterVCDelegate.swift */; };
 		9847CB7725C45C3C00922CE0 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7625C45C3C00922CE0 /* UIViewExt.swift */; };
+		9847CB7925C46E1D00922CE0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7825C46E1D00922CE0 /* LoginViewController.swift */; };
 		98679E3025A53EC4000C3AE8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98679E2F25A53EC4000C3AE8 /* GradientView.swift */; };
 		98757BA425A5430C00D61715 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98757BA325A5430C00D61715 /* HomeViewController.swift */; };
 		98757BA625A5467200D61715 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98757BA525A5467200D61715 /* RoundImageView.swift */; };
@@ -30,6 +31,7 @@
 		970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.release.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.release.xcconfig"; sourceTree = "<group>"; };
 		9847CB7325C25C9700922CE0 /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		9847CB7625C45C3C00922CE0 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		9847CB7825C46E1D00922CE0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		98679E2F25A53EC4000C3AE8 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		98757BA325A5430C00D61715 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		98757BA525A5467200D61715 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				98757BA325A5430C00D61715 /* HomeViewController.swift */,
 				98757BAE25AA948600D61715 /* MenuViewController.swift */,
 				98757BB025AA94FE00D61715 /* ContainerViewController.swift */,
+				9847CB7825C46E1D00922CE0 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				98757BA425A5430C00D61715 /* HomeViewController.swift in Sources */,
 				98757BAA25A5489900D61715 /* CircleView.swift in Sources */,
 				98679E3025A53EC4000C3AE8 /* GradientView.swift in Sources */,
+				9847CB7925C46E1D00922CE0 /* LoginViewController.swift in Sources */,
 				98757BAD25A54BCC00D61715 /* RoundedShadowButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

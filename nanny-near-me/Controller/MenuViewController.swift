@@ -15,6 +15,16 @@ class MenuViewController: UIViewController {
 
     }
     
-
+    @IBAction func signUpLoginBtnWasPressed(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+        
+        present(loginVC!, animated: true, completion: nil)
+        
+        // if you optionally cast "as?" you must force unwrap it "loginVC!"
+    }
+    
 
 }
