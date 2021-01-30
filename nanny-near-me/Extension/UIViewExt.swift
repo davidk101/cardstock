@@ -21,13 +21,25 @@ extension UIView{
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    @objc func keyboardWillChange(_ notification: NSNotification){ // this func called -> animates the View to go above the keyboard
+    // this func called -> animates the View to go above the keyboard
+    @objc func keyboardWillChange(_ notification: NSNotification){
         
-        // duration for animation of moving view up is the same as that of keyboard moving up
+        // duration for animation of moving view up is the same as that of duration of keyboard moving up
         let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
         
         let curve = notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! UInt
         
-        let curFrame = (notification.userInfo![)
+        // frame of the keyboard
+        let curFrame = (notification.userInfo![UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        
+        // frame of the enitre view
+        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        let deltaY = targetFrame.origin.y - curFrame.origin.y
+        
+        // using the above values to animate
+        UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: UIView.KeyframeAnimationOptions(rawValue: curve), animations: {
+            self.frame.origin.y += deltaY
+        }, completion: nil)
     }
 }
