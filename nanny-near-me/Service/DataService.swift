@@ -39,4 +39,17 @@ class DataService{
         return _REF_TRIPS
     }
     
+    // creating a user/helper
+    func createFirebaseDBUser(uid: String, userData: Dictionary<String,Any>, isHelper: Bool){
+        
+        // https://...firebasio.com/helpers/bib32ihbii/userData will be the path
+        if isHelper{
+            REF_HELPERS.child(uid).updateChildValues(userData)
+        }
+        else{
+            // https://...firebasio.com/users/vhbwe11hbhib1/userData will be the path
+            REF_USERS.child(uid).updateChildValues(userData)
+        }
+        
+    }
 }
