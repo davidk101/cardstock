@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		705DC46E6B781FB510F866E6 /* Pods_nanny_near_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */; };
 		981EF56E25C5DD3B002F9D1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 981EF56D25C5DD3B002F9D1B /* GoogleService-Info.plist */; };
+		981EF57125C5E0A5002F9D1B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981EF57025C5E0A5002F9D1B /* DataService.swift */; };
 		9847CB7425C25C9700922CE0 /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7325C25C9700922CE0 /* CenterVCDelegate.swift */; };
 		9847CB7725C45C3C00922CE0 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7625C45C3C00922CE0 /* UIViewExt.swift */; };
 		9847CB7925C46E1D00922CE0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7825C46E1D00922CE0 /* LoginViewController.swift */; };
@@ -31,6 +32,7 @@
 		5C00B930C210E67A682461E7 /* Pods-nanny-near-me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.debug.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.debug.xcconfig"; sourceTree = "<group>"; };
 		970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.release.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.release.xcconfig"; sourceTree = "<group>"; };
 		981EF56D25C5DD3B002F9D1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		981EF57025C5E0A5002F9D1B /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		9847CB7325C25C9700922CE0 /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		9847CB7625C45C3C00922CE0 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		9847CB7825C46E1D00922CE0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 				C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		981EF56F25C5E08D002F9D1B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				981EF57025C5E0A5002F9D1B /* DataService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		9847CB7525C45C1600922CE0 /* Extension */ = {
@@ -139,6 +149,7 @@
 		9884F93025A283D30022FD9A /* nanny-near-me */ = {
 			isa = PBXGroup;
 			children = (
+				981EF56F25C5E08D002F9D1B /* Service */,
 				9847CB7525C45C1600922CE0 /* Extension */,
 				98757BB225AA993800D61715 /* Protocol */,
 				98679E2E25A53E92000C3AE8 /* Controller */,
@@ -281,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9847CB7725C45C3C00922CE0 /* UIViewExt.swift in Sources */,
+				981EF57125C5E0A5002F9D1B /* DataService.swift in Sources */,
 				98757BA625A5467200D61715 /* RoundImageView.swift in Sources */,
 				9884F93225A283D30022FD9A /* AppDelegate.swift in Sources */,
 				98757BB125AA94FE00D61715 /* ContainerViewController.swift in Sources */,
