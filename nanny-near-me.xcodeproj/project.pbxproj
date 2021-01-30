@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		705DC46E6B781FB510F866E6 /* Pods_nanny_near_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */; };
+		981EF56E25C5DD3B002F9D1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 981EF56D25C5DD3B002F9D1B /* GoogleService-Info.plist */; };
 		9847CB7425C25C9700922CE0 /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7325C25C9700922CE0 /* CenterVCDelegate.swift */; };
 		9847CB7725C45C3C00922CE0 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7625C45C3C00922CE0 /* UIViewExt.swift */; };
 		9847CB7925C46E1D00922CE0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847CB7825C46E1D00922CE0 /* LoginViewController.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		5C00B930C210E67A682461E7 /* Pods-nanny-near-me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.debug.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.debug.xcconfig"; sourceTree = "<group>"; };
 		970B58E19F54D9EFB97021CE /* Pods-nanny-near-me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nanny-near-me.release.xcconfig"; path = "Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me.release.xcconfig"; sourceTree = "<group>"; };
+		981EF56D25C5DD3B002F9D1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9847CB7325C25C9700922CE0 /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		9847CB7625C45C3C00922CE0 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		9847CB7825C46E1D00922CE0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				9884F93A25A283D60022FD9A /* Assets.xcassets */,
 				9884F93C25A283D60022FD9A /* LaunchScreen.storyboard */,
 				9884F93F25A283D60022FD9A /* Info.plist */,
+				981EF56D25C5DD3B002F9D1B /* GoogleService-Info.plist */,
 			);
 			path = "nanny-near-me";
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9884F93E25A283D60022FD9A /* LaunchScreen.storyboard in Resources */,
+				981EF56E25C5DD3B002F9D1B /* GoogleService-Info.plist in Resources */,
 				9884F93B25A283D60022FD9A /* Assets.xcassets in Resources */,
 				9884F93925A283D30022FD9A /* Main.storyboard in Resources */,
 			);
