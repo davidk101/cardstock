@@ -68,24 +68,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         self.dismiss(animated: true, completion: nil) // removing LoginVC
                     }
                     
-                    // creating a new user since the user does not exist
+                    // an error exists
                     else{
                         
                         if let errorCode = AuthErrorCode(rawValue: error!._code){
                             
-                            switch errorCode {
-                                
-                            case .invalidEmail:
-                                print()
-                            case .emailAlreadyInUse:
-                                print()
-                            case .wrongPassword:
-                                print()
-                            default:
+                            if errorCode == .wrongPassword{
                                 print()
                             }
                         }
                         
+                        // creating new user
                         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                             
                             if error != nil{
@@ -98,8 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                         print()
                                     case .emailAlreadyInUse:
                                         print()
-                                    case .wrongPassword:
-                                        print()
+
                                     default:
                                         print()
                                     }
