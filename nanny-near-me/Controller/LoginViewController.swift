@@ -51,16 +51,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             
                             if self.segmentedControl.selectedSegmentIndex == 0{ // i.e. hirer is selected
                                 
-                                let userData = ["provider": user.providerID] as [String: Any]
+                                let userData = ["provider": user.user.providerID] as [String: Any]
                                 
-                                DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isHelper: false)
+                                DataService.instance.createFirebaseDBUser(uid: user.user.uid, userData: userData, isHelper: false)
                             }
                             
                             else{ // i.e. helper is selected
                                 
-                                let userData = ["provider":user.providerID, "userIsDriver": true, "isPickUpModeEnabled": false, "driverIsOnTrip":false] as [String: Any]
+                                let userData = ["provider":user.user.providerID, "userIsDriver": true, "isPickUpModeEnabled": false, "driverIsOnTrip":false] as [String: Any]
                                 
-                                DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isHelper: true)
+                                DataService.instance.createFirebaseDBUser(uid: user.user.uid, userData: userData, isHelper: true)
                                 
                             }
                         }
@@ -103,17 +103,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 if let user = user{
                                     
                                     if self.segmentedControl.selectedSegmentIndex == 0{
-                                        let userData = ["provider": user.providerID] as [String: Any]
+                                        let userData = ["provider": user.user.providerID] as [String: Any]
                                         
-                                        DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isHelper: false)
+                                        DataService.instance.createFirebaseDBUser(uid: user.user.uid, userData: userData, isHelper: false)
                                     }
                                 }
                                 
                                 else{
                                     
-                                    let userData = ["provider": user.providerID, "userIsDriver": true,"isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
+                                    let userData = ["provider": user?.user.providerID as Any, "userIsDriver": true,"isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
                                     
-                                    DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isHelper: true)
+                                    DataService.instance.createFirebaseDBUser(uid: user!.user.uid, userData: userData, isHelper: true)
                                 }
                             }
                             
