@@ -39,9 +39,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             authBtn.animateButton(shouldLoad: true, withMessage: nil)
             self.view.endEditing(true) // hiding keyboard
             
-            
             if let email = emailField.text, let password = passwordField.text{ // closure
                 
+                // ensuring loginVC as the page for BOTH sign up and login functionality
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                     
                     // logging in a currently existing user
@@ -70,6 +70,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     // creating a new user since the user does not exist
                     else{
+                        
+                        if let errorCode = AuthErrorCode(rawValue: error!._code){
+                            
+                            switch errorCode {
+                                
+                            case .invalidEmail:
+                                print()
+                            case .emailAlreadyInUse:
+                                print()
+                            case .wrongPassword:
+                                print()
+                            default:
+                                print()
+                            }
+                        }
                         
                         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                             
