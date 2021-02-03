@@ -68,7 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         self.dismiss(animated: true, completion: nil) // removing LoginVC
                     }
                     
-                    // creating a new user
+                    // creating a new user since the user does not exist
                     else{
                         
                         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -76,15 +76,41 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             if error != nil{
                                 
                                 if let errorCode = AuthErrorCode(rawValue: error!._code){
+                                    
                                     switch errorCode {
-                                    case :
-                                        <#code#>
+                                        
+                                    case .invalidEmail:
+                                        print()
+                                    case .emailAlreadyInUse:
+                                        print()
+                                    case .wrongPassword:
+                                        print()
                                     default:
-                                        <#code#>
+                                        print()
                                     }
                                 }
                             }
                             
+                            else{
+                                
+                                if let user = user{
+                                    
+                                    if self.segmentedControl.selectedSegmentIndex == 0{
+                                        let userData = ["provider": user.providerID] as [String: Any]
+                                        
+                                        DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isHelper: false)
+                                    }
+                                }
+                                
+                                else{
+                                    
+                                    let userData = ["provider": user.providerID, "userIsDriver": true,"isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
+                                    
+                                    DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isHelper: true)
+                                }
+                            }
+                            
+                            self.dismiss(animated: true, completion: nil) // dismissing loginVC
                         }
                     }
                 }
