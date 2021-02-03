@@ -253,6 +253,7 @@
                                 </state>
                                 <connections>
                                     <action selector="actionBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fdI-g2-fYz"/>
+                                    <action selector="authBtnWasPressed:" destination="Vhi-Pd-VfH" eventType="touchUpInside" id="Twx-me-BKE"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up / Login as a helper or hirer here!" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhf-OM-xqb">
@@ -295,6 +296,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8YM-l8-5F8"/>
                     </view>
+                    <connections>
+                        <outlet property="authBtn" destination="uQe-TG-EIf" id="nRs-Tn-3TC"/>
+                        <outlet property="emailField" destination="E6X-iE-EgT" id="8vb-Y2-nN9"/>
+                        <outlet property="passwordField" destination="35m-IP-shE" id="a90-ni-xf8"/>
+                        <outlet property="segmentedControl" destination="b58-lE-zgY" id="jEh-wk-NDw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iFS-JN-PI0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
