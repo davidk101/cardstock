@@ -33,6 +33,22 @@ class MenuViewController: UIViewController {
         helperModeLbl.isHidden = true // we dont know if user is driver yet
         
         observeHirersAndHelpers()
+        
+        // checking if there is anyone logged in
+        if Auth.auth().currentUser == nil{
+            
+            userEmailLbl.text = ""
+            userAccountTypeLbl.text = ""
+            loginOutBtn.setTitle("Sign Up / Login", for: .normal)
+            
+        }
+            // there is someone logged in
+        else{
+            
+            userEmailLbl.text = Auth.auth().currentUser?.email
+            userAccountTypeLbl.text = ""
+            loginOutBtn.setTitle("Logout", for: .normal)
+        }
     }
     
     // setting up observer to watch database for changes
@@ -71,7 +87,7 @@ class MenuViewController: UIViewController {
                         self.helperModeSwitch.isHidden = false
                         
                         // checking if helper was looking to do pickups
-                        let switchStatus = snap.childSnapshot(forPath: "isPickupModeEnabled").value as! Bool
+                        let switchStatus = snap.childSnapshot(forPath: "isHelperModeEnabled").value as! Bool
                         self.helperModeSwitch.isOn = switchStatus
                         
                         self.helperModeLbl.isHidden = false

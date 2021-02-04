@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             
                             else{ // i.e. helper is selected
                                 
-                                let userData = ["provider":user.user.providerID, "userIsHelper": true, "isPickUpModeEnabled": false, "helperIsOnTrip":false] as [String: Any]
+                                let userData = ["provider":user.user.providerID, "userIsHelper": true, "isHelperModeEnabled": false, "helperIsOnTrip":false] as [String: Any]
                                 
                                 DataService.instance.createFirebaseDBUser(uid: user.user.uid, userData: userData, isHelper: true)
                                 
@@ -111,7 +111,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 
                                 else{
                                     
-                                    let userData = ["provider": user?.user.providerID as Any, "userIsHelper": true,"isPickupModeEnabled": false, "helperIsOnTrip": false] as [String: Any]
+                                    let userData = ["provider": user?.user.providerID as Any, "userIsHelper": true,"isHelperModeEnabled": false, "helperIsOnTrip": false] as [String: Any]
                                     
                                     DataService.instance.createFirebaseDBUser(uid: user!.user.uid, userData: userData, isHelper: true)
                                 }
