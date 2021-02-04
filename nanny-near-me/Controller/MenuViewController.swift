@@ -99,13 +99,39 @@ class MenuViewController: UIViewController {
     
     @IBAction func signUpLoginBtnWasPressed(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-        
-        present(loginVC!, animated: true, completion: nil)
-        
-        // if you optionally cast "as?" you must force unwrap it "loginVC!"
+        // logging user in
+        if Auth.auth().currentUser == nil{
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+            
+            present(loginVC!, animated: true, completion: nil)
+            
+            // if you optionally cast "as?" you must force unwrap it "loginVC!"
+        }
+            
+        // logging user out
+        else{
+            
+            do{
+                try Auth.auth().signOut()
+                
+                // repeating these steps again as in viewDidAppear() as we are trying to make changes as soon as the button it hit
+                // and not only when the view appears 
+                userEmailLbl.text = ""
+                userAccountTypeLbl.text = ""
+                helperModeLbl.text = ""
+                helperModeSwitch.isHidden = true
+                loginOutBtn.setTitle("Sign Up / Login", for: .normal)
+            }
+            catch (let error){
+                
+                print(error)
+            }
+            
+        }
+
     }
     
 
