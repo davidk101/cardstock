@@ -11,6 +11,8 @@ import Firebase
 
 class MenuViewController: UIViewController {
     
+    let currentUserId = Auth.auth().currentUser?.uid
+    
     @IBOutlet weak var userAccountTypeLbl: UILabel!
     @IBOutlet weak var userEmailLbl: UILabel!
     @IBOutlet weak var helperModeLbl: UILabel!
@@ -97,6 +99,18 @@ class MenuViewController: UIViewController {
         })
     }
     
+    // the switch would only be shown if the user was a helper in the first place
+    @IBAction func switchWasToggled(_ sender: Any) {
+        
+        if helperModeSwitch.isOn{
+            helperModeLbl.text = "HELPER MODE ENABLED"
+            DataService.instance.REF_HELPERS.child(currentUserId!).updateChildValues(["isHelperModeEnabled": true])
+        }
+        else{
+            helperModeLbl.text = "HELPER MODE DISABLED"
+            DataService.instance.REF_HELPERS.child(currentUserId!).updateChildValues(["isHelperModeEnabled": false])
+        }
+    }
     @IBAction func signUpLoginBtnWasPressed(_ sender: Any) {
         
         // logging user in
@@ -117,8 +131,8 @@ class MenuViewController: UIViewController {
             do{
                 try Auth.auth().signOut()
                 
-                // repeating these steps again as in viewDidAppear() as we are trying to make changes as soon as the button it hit
-                // and not only when the view appears 
+                // repeating these steps again as in viewWillAppear() as we are trying to make changes as soon as the button is hit
+                // and not only when the view appears
                 userEmailLbl.text = ""
                 userAccountTypeLbl.text = ""
                 helperModeLbl.text = ""
