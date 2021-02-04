@@ -7,13 +7,68 @@
 //
 
 import UIKit
+import Firebase
 
 class MenuViewController: UIViewController {
-
+    
+    @IBOutlet weak var userAccountTypeLbl: UILabel!
+    @IBOutlet weak var userEmailLbl: UILabel!
+    @IBOutlet weak var helperModeLbl: UILabel!
+    @IBOutlet weak var helperModeSwitch: UISwitch!
+    @IBOutlet weak var loginOutBtn: UIButton!
+    
+    // called after view has been loaded
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    // called before the view appears
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // default
+        helperModeSwitch.isOn = false
+        helperModeSwitch.isHidden = true // we dont know if user is driver yet
+        helperModeLbl.isHidden = true // we dont know if user is driver yet
+        
+    }
+    
+    // setting up observer to watch database for changes
+    func observeHirersAndHelpers(){
+        
+        // snapshot refers to the 'users' dictionary here
+        DataService.instance.REF_USERS.observeSingleEvent(of: .value, with:  { (snapshot) in
+            
+            // parsing through every child of the 'users' dictionary
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
+                
+                // checking if key of each child is equal to our uid
+                for snap in snapshot{
+                    
+                    if snap.key == Auth.auth().currentUser?.uid{
+                        self.userAccountTypeLbl.text = "HIRER"
+                        
+                    }
+                }
+            }
+            
+        })
+        
+        DataService.instance.REF_HELPERS.observeSingleEvent(of: .value, with:  { (snapshot) in
+            
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
+                
+                for snap in snapshot{
+                    
+                    if snap.key == Auth.auth().currentUser?.uid{
+                        self.userAccountTypeLbl.text = "HELPER"
+                    }
+                }
+            }
+        }
+        
+    })
     
     @IBAction func signUpLoginBtnWasPressed(_ sender: Any) {
         
