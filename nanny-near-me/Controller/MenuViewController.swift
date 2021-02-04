@@ -32,6 +32,7 @@ class MenuViewController: UIViewController {
         helperModeSwitch.isHidden = true // we dont know if user is driver yet
         helperModeLbl.isHidden = true // we dont know if user is driver yet
         
+        observeHirersAndHelpers()
     }
     
     // setting up observer to watch database for changes
@@ -40,7 +41,7 @@ class MenuViewController: UIViewController {
         // snapshot refers to the 'users' dictionary here
         DataService.instance.REF_USERS.observeSingleEvent(of: .value, with:  { (snapshot) in
             
-            // parsing through every child of the 'users' dictionary
+            // // each snap is a hirer | parsing through every child of the 'users' dictionary
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
                 
                 // checking if key of each child is equal to our uid
@@ -55,20 +56,30 @@ class MenuViewController: UIViewController {
             
         })
         
+        // snapshot refers to the 'helpers' dictionary here
         DataService.instance.REF_HELPERS.observeSingleEvent(of: .value, with:  { (snapshot) in
             
+            // parsing through every child of the 'helpers' dictionary
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
                 
+                // each snap is a helper
                 for snap in snapshot{
                     
+                    // checking if key of each child is equal to our uid
                     if snap.key == Auth.auth().currentUser?.uid{
                         self.userAccountTypeLbl.text = "HELPER"
+                        self.helperModeSwitch.isHidden = false
+                        
+                        // checking if helper was looking to do pickups
+                        let switchStatus = snap.childSnapshot(forPath: "isPickupModeEnabled").value as! Bool
+                        self.helperModeSwitch.isOn = switchStatus
+                        
+                        self.helperModeLbl.isHidden = false
                     }
                 }
             }
-        }
-        
-    })
+        })
+    }
     
     @IBAction func signUpLoginBtnWasPressed(_ sender: Any) {
         
