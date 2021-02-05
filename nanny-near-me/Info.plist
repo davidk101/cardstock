@@ -61,6 +61,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Helper For Hire is requesting your location</string>
+	<string>Helper For Hire needs your location for helpers to find you</string>
 </dict>
 </plist>

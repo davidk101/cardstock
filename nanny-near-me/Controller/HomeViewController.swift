@@ -20,23 +20,29 @@ class HomeViewController: UIViewController , MKMapViewDelegate{
     
     var manager: CLLocationManager?
     
+    var regionRadius: CLLocationDistance = 1000 // metre radius from current location
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        manager = CLLocationManager()
+        
+        manager?.delegate = self
+        // the most accurate location monitoring
+        manager?.desiredAccuracy = kCLLocationAccuracyBest
         
         checkLocationAuthStatus()
         
         mapView.delegate = self // setting mapview's delegate to be ViewController
+        
+        // only after setting mapView delegate
+        centerMapOnUserLocation()
     }
     
     func checkLocationAuthStatus(){
         
         // checks if authorized by user to start retrieving lcoation
         if CLLocationManager.authorizationStatus() == .authorizedAlways{
-            manager?.delegate = self
-            
-            // the most accurate location monitoring
-            manager?.desiredAccuracy = kCLLocationAccuracyBest
-            
             manager?.startUpdatingLocation()
         }
         else{
@@ -46,8 +52,11 @@ class HomeViewController: UIViewController , MKMapViewDelegate{
     
     func centerMapOnUserLocation(){
         
-        
+        // setting rectangular region with center
+        let  coordinateRegion = MKCoordinateRegion.init(center: mapView.userLocation.coordinate, latitudinalMeters: regionRadius*2.0, longitudinalMeters: regionRadius*2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
+    
     
     @IBAction func actionBtnWasPressed(_ sender: Any) {
         
@@ -63,10 +72,13 @@ class HomeViewController: UIViewController , MKMapViewDelegate{
 // conforming to the delegate
 extension HomeViewController: CLLocationManagerDelegate{
     
+    // monitors change in auth status
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
+        checkLocationAuthStatus()
+        
         if status == .authorizedAlways{
-            checkLocationAuthStatus()
+            
             mapView.showsUserLocation = true
             mapView.userTrackingMode = .follow
         }
