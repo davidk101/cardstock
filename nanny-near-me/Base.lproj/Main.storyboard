@@ -23,6 +23,9 @@
                                 <rect key="frame" x="332" y="693" width="62" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="centerMapBtn"/>
+                                <connections>
+                                    <action selector="centerMapBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LDU-Zs-qnc"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-dE-cMP">
                                 <rect key="frame" x="0.0" y="765" width="406" height="97"/>

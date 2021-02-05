@@ -57,6 +57,10 @@ class HomeViewController: UIViewController , MKMapViewDelegate{
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
+    @IBAction func centerMapBtnWasPressed(_ sender: Any) {
+        
+        centerMapOnUserLocation()
+    }
     
     @IBAction func actionBtnWasPressed(_ sender: Any) {
         
