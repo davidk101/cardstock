@@ -26,6 +26,7 @@
 		9884F93925A283D30022FD9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9884F93725A283D30022FD9A /* Main.storyboard */; };
 		9884F93B25A283D60022FD9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9884F93A25A283D60022FD9A /* Assets.xcassets */; };
 		9884F93E25A283D60022FD9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9884F93C25A283D60022FD9A /* LaunchScreen.storyboard */; };
+		9894FF3D25CF448000E0B9D1 /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894FF3C25CF448000E0B9D1 /* UpdateService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		9884F93A25A283D60022FD9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9884F93D25A283D60022FD9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9884F93F25A283D60022FD9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9894FF3C25CF448000E0B9D1 /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
 		C3DBB27F784C46AABAAEC1F9 /* Pods_nanny_near_me.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nanny_near_me.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				981EF57025C5E0A5002F9D1B /* DataService.swift */,
+				9894FF3C25CF448000E0B9D1 /* UpdateService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				9847CB7425C25C9700922CE0 /* CenterVCDelegate.swift in Sources */,
 				98757BA825A5477000D61715 /* RoundedShadow.swift in Sources */,
 				98757BAF25AA948600D61715 /* MenuViewController.swift in Sources */,
+				9894FF3D25CF448000E0B9D1 /* UpdateService.swift in Sources */,
 				98757BA425A5430C00D61715 /* HomeViewController.swift in Sources */,
 				98757BAA25A5489900D61715 /* CircleView.swift in Sources */,
 				98679E3025A53EC4000C3AE8 /* GradientView.swift in Sources */,
