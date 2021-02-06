@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class HomeViewController: UIViewController , MKMapViewDelegate{
+class HomeViewController: UIViewController {
     
 
     @IBOutlet weak var mapView: MKMapView!
@@ -87,5 +87,16 @@ extension HomeViewController: CLLocationManagerDelegate{
             mapView.showsUserLocation = true
             mapView.userTrackingMode = .follow
         }
+    }
+}
+
+// conforming to the delegate
+extension HomeViewController: MKMapViewDelegate{
+    
+    // updates when location of current user changes in mapView
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        
+        UpdateService.instance.updateUserLocation(withCoordinate: userLocation.coordinate)
+        UpdateService.instance.updateHelperLocation(withCoordindate: userLocation.coordinate)
     }
 }
