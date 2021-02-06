@@ -62,5 +62,9 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Helper For Hire needs your location for helpers to find you</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Helper For Hire needs your location for helpers to find you</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Helper For Hire needs your location for helpers to find you</string>
 </dict>
 </plist>

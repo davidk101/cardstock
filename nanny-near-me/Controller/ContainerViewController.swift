@@ -108,10 +108,10 @@ extension ContainerViewController: CenterVCDelegate{ // ContainerVC inherits fro
     }
     
     func addChildSidePanelViewController(_ sidePanelController: MenuViewController){
-        view.insertSubview(sidePanelController.view, at: 0)
+        view.insertSubview(sidePanelController.view, at: 0) // error-prone line
         addChild(sidePanelController)
+
         sidePanelController.didMove(toParent: self)
-        
     }
     
     @objc func animateLeftPanel(shouldExpand: Bool) { // add shadow to the other VC and slide current VC to the right

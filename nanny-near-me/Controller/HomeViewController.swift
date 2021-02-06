@@ -53,7 +53,8 @@ class HomeViewController: UIViewController , MKMapViewDelegate{
     func centerMapOnUserLocation(){
         
         // setting rectangular region with center
-        let  coordinateRegion = MKCoordinateRegion.init(center: mapView.userLocation.coordinate, latitudinalMeters: regionRadius*2.0, longitudinalMeters: regionRadius*2.0)
+        let coordinateRegion = MKCoordinateRegion.init(center: mapView.userLocation.coordinate, latitudinalMeters: regionRadius*2.0, longitudinalMeters: regionRadius*2.0)
+        
         mapView.setRegion(coordinateRegion, animated: true)
     }
     

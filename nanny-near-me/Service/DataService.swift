@@ -16,7 +16,7 @@ class DataService{
     
     // instantiated for the entire lifecycle of the app
     static let instance = DataService()
-    
+
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users") // creating a folder OR appending data to the folder name in the String
     private var _REF_HELPERS = DB_BASE.child("helpers")
