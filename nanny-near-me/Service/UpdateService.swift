@@ -16,7 +16,7 @@ class UpdateService{
     
     static var instance = UpdateService()
     
-    // changes the hirer/user location based on mapView location update i.e. mapView passes coordinate changes in real time
+    // changes the hirer/user location based on mapView location update i.e. mapView passes coordinate changes in real time to Firebase
     func updateUserLocation(withCoordinate coordinate: CLLocationCoordinate2D){
         
         DataService.instance.REF_USERS.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -35,16 +35,23 @@ class UpdateService{
         })
     }
     
+    // i.e. mapView passes coordinate changes in real time to Firebase
     func updateHelperLocation(withCoordindate coordinate: CLLocationCoordinate2D){
         
         DataService.instance.REF_HELPERS.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if let driverSnapshot = snapshot.children.allObjects as? [DataSnapshot]{
+            // parsing through all the children of "helpers"
+            if let helperSnapshot = snapshot.children.allObjects as? [DataSnapshot]{
                 
-                for driver in driverSnapshot{
-                    // ensuring driver's key matches current user ID
-                    if driver.key == Auth.auth().currentUser?.uid{
+                for helper in helperSnapshot{
+                    // ensuring helper's key matches helper's current user ID
+                    if helper.key == Auth.auth().currentUser?.uid{
                         
+                        // ensuring pickup mode is on for the helper
+                        if helper.childSnapshot(forPath: "isHelperModeEnabled").value as? Bool == true{
+                            
+                            DataService.instance.REF_HELPERS.child(helper.key).updateChildValues(["coordinate": [coordinate.latitude, coordinate.longitude]])
+                        }
                         
                     }
                 }
