@@ -124,6 +124,7 @@ extension HomeViewController: UITextFieldDelegate{
             tableView.delegate = self
             tableView.dataSource = self
             
+            // sort of as an identifying key
             tableView.tag = 18
             
             view.addSubview(tableView)
@@ -153,6 +154,20 @@ extension HomeViewController: UITextFieldDelegate{
             UIView.animate(withDuration: 0.2, animations: {
                 // end position: 170 units above bottom-most point
                 self.tableView.frame = CGRect(x: 20, y: 170, width: self.view.frame.width - 40, height: self.view.frame.height - 170)
+            })
+        }
+        else{
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                // end position: bottom most position of screen
+                self.tableView.frame = CGRect(x: 20, y: self.view.frame.height, width: self.view.frame.width - 40, height: self.view.frame.height - 170)
+            }, completion: { (finished) in
+                for subview in self.view.subviews{
+                    if subview.tag == 18{
+                        subview.removeFromSuperview()
+                    }
+                        
+                }
             })
         }
     }
