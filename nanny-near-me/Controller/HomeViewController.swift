@@ -133,7 +133,14 @@ extension HomeViewController: UITextFieldDelegate{
     
     }
     
+    // after pressing return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == destinationTextField{
+            
+            // hides keyboard and removes cursor for typing
+            view.endEditing(true)
+        }
         
         return true
     }
@@ -142,8 +149,9 @@ extension HomeViewController: UITextFieldDelegate{
         
     }
     
+    // after pressing clear button 
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        
+        centerMapOnUserLocation()
         return true
     }
     
@@ -152,6 +160,7 @@ extension HomeViewController: UITextFieldDelegate{
         if (shouldShow){
             
             UIView.animate(withDuration: 0.2, animations: {
+                
                 // end position: 170 units above bottom-most point
                 self.tableView.frame = CGRect(x: 20, y: 170, width: self.view.frame.width - 40, height: self.view.frame.height - 170)
             })
@@ -159,6 +168,7 @@ extension HomeViewController: UITextFieldDelegate{
         else{
             
             UIView.animate(withDuration: 0.2, animations: {
+                
                 // end position: bottom most position of screen
                 self.tableView.frame = CGRect(x: 20, y: self.view.frame.height, width: self.view.frame.width - 40, height: self.view.frame.height - 170)
             }, completion: { (finished) in
