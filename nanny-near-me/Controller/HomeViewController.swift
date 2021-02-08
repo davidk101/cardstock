@@ -15,12 +15,15 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var actionBtn: RoundedShadowButton!
+    @IBOutlet weak var destinationTextField: UITextField!
     
     var delegate: CenterVCDelegate?
     
     var manager: CLLocationManager?
     
     var regionRadius: CLLocationDistance = 1000 // metre radius from current location
+    
+    var tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,4 +102,65 @@ extension HomeViewController: MKMapViewDelegate{
         UpdateService.instance.updateUserLocation(withCoordinate: userLocation.coordinate)
         UpdateService.instance.updateHelperLocation(withCoordindate: userLocation.coordinate)
     }
+}
+
+extension HomeViewController: UITextFieldDelegate{
+    
+    // when textfield is selected
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if (textField == destinationTextField){
+            
+            // start position: bottom most position of screen
+            // end position: view.frame.height - 170
+            tableView.frame = CGRect(x: 20, y: view.frame.height, width: view.frame.width - 40, height: view.frame.height - 170)
+            tableView.layer.cornerRadius = 5.0
+            tableView.rowHeight = 60
+            
+            // registering a cell
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
+            
+            tableView.delegate = self
+            tableView.dataSource = self
+            
+            tableView.tag = 18
+            
+            view.addSubview(tableView)
+        }
+    
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        
+    }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    
 }

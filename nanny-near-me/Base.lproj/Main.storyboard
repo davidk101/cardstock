@@ -105,6 +105,7 @@
                     </view>
                     <connections>
                         <outlet property="actionBtn" destination="F2v-xe-bcX" id="Ncq-En-D9c"/>
+                        <outlet property="destinationTextField" destination="1zI-wg-aUj" id="Qv1-3F-vWY"/>
                         <outlet property="mapView" destination="1Le-i5-H5P" id="iRX-0p-1ou"/>
                     </connections>
                 </viewController>
