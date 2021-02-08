@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     
     var regionRadius: CLLocationDistance = 1000 // metre radius from current location
     
+    // instantiating tableView
     var tableView = UITableView()
     
     override func viewDidLoad() {
@@ -37,6 +38,7 @@ class HomeViewController: UIViewController {
         checkLocationAuthStatus()
         
         mapView.delegate = self // setting mapview's delegate to be ViewController
+        destinationTextField.delegate  = self // telling this text field to receive commands from this VC
         
         // only after setting mapView delegate
         centerMapOnUserLocation()
@@ -112,7 +114,6 @@ extension HomeViewController: UITextFieldDelegate{
         if (textField == destinationTextField){
             
             // start position: bottom most position of screen
-            // end position: view.frame.height - 170
             tableView.frame = CGRect(x: 20, y: view.frame.height, width: view.frame.width - 40, height: view.frame.height - 170)
             tableView.layer.cornerRadius = 5.0
             tableView.rowHeight = 60
@@ -126,12 +127,14 @@ extension HomeViewController: UITextFieldDelegate{
             tableView.tag = 18
             
             view.addSubview(tableView)
+            animateTableView(shouldShow: true)
         }
     
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -140,6 +143,18 @@ extension HomeViewController: UITextFieldDelegate{
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         
+        return true
+    }
+    
+    func animateTableView(shouldShow: Bool){
+        
+        if (shouldShow){
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                // end position: 170 units above bottom-most point
+                self.tableView.frame = CGRect(x: 20, y: 170, width: self.view.frame.width - 40, height: self.view.frame.height - 170)
+            })
+        }
     }
 }
 
