@@ -12,7 +12,6 @@ import CoreLocation
 
 class HomeViewController: UIViewController {
     
-
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var actionBtn: RoundedShadowButton!
     @IBOutlet weak var destinationTextField: UITextField!
@@ -25,6 +24,8 @@ class HomeViewController: UIViewController {
     
     // instantiating tableView
     var tableView = UITableView()
+    
+    var matchingItems: [MKMapItem] = [MKMapItem]() // instantiating for local search
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +105,31 @@ extension HomeViewController: MKMapViewDelegate{
         UpdateService.instance.updateUserLocation(withCoordinate: userLocation.coordinate)
         UpdateService.instance.updateHelperLocation(withCoordindate: userLocation.coordinate)
     }
+    
+    func performSearch(){
+        
+        matchingItems.removeAll() // removing previous search results from array
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = destinationTextField.text
+        request.region = mapView.region // searches for locations in the mapView first
+        
+        let search = MKLocalSearch(request: request) // mapView API
+        
+        search.start { (response, error) in
+            if error != nil{
+                print(error.debugDescription)
+            }
+            else if response?.mapItems.count == 0{
+                print("no locations found")
+            }
+            else{
+                for mapItem in response!.mapItems{
+                    self.matchingItems.append(mapItem as MKMapItem)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 extension HomeViewController: UITextFieldDelegate{
@@ -138,6 +164,7 @@ extension HomeViewController: UITextFieldDelegate{
         
         if textField == destinationTextField{
             
+            performSearch()
             // hides keyboard and removes cursor for typing
             view.endEditing(true)
         }
@@ -151,6 +178,11 @@ extension HomeViewController: UITextFieldDelegate{
     
     // after pressing clear button 
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        
+        // removing entries from local search
+        matchingItems = []
+        tableView.reloadData()
+        
         centerMapOnUserLocation()
         return true
     }
@@ -186,11 +218,19 @@ extension HomeViewController: UITextFieldDelegate{
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return matchingItems.count
     }
     
+    // sort of a for loop
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "LocationCell")
+        let mapItem = matchingItems[indexPath.row]
+        
+        cell.textLabel?.text = mapItem.name
+        cell.detailTextLabel?.text = mapItem.placemark.title // i.e. address
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
