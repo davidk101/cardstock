@@ -101,9 +101,9 @@ extension HomeViewController: MKMapViewDelegate{
     
     // updates when location of current user changes in mapView
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        
-        UpdateService.instance.updateUserLocation(withCoordinate: userLocation.coordinate)
-        UpdateService.instance.updateHelperLocation(withCoordindate: userLocation.coordinate)
+        // error must be fixed
+        //UpdateService.instance.updateUserLocation(withCoordinate: userLocation.coordinate)
+        //UpdateService.instance.updateHelperLocation(withCoordindate: userLocation.coordinate)
     }
     
     func performSearch(){
