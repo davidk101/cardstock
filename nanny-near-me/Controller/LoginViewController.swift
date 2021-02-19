@@ -36,10 +36,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if emailField.text != nil && passwordField.text != nil{
             
-            authBtn.animateButton(shouldLoad: true, withMessage: nil)
+            //authBtn.animateButton(shouldLoad: true, withMessage: nil)
             self.view.endEditing(true) // hiding keyboard
             
-            if let email = emailField.text, let password = passwordField.text{ // closure
+            if let email = emailField.text, let password = passwordField.text{ // closure: email and password fields have text
                 
                 // ensuring loginVC as the page for BOTH sign up and login functionality
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
@@ -47,6 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     // logging in a currently existing user
                     // only executed if 'user' exists
                     if error == nil{
+                        
                         if let user = user{
                             
                             if self.segmentedControl.selectedSegmentIndex == 0{ // i.e. hirer is selected
@@ -55,7 +56,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 
                                 DataService.instance.createFirebaseDBUser(uid: user.user.uid, userData: userData, isHelper: false)
                             }
-                            
                             else{ // i.e. helper is selected
                                 
                                 let userData = ["provider":user.user.providerID, "userIsHelper": true, "isHelperModeEnabled": false, "helperIsOnTrip":false] as [String: Any]
@@ -68,20 +68,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         self.dismiss(animated: true, completion: nil) // removing LoginVC
                     }
                     
-                    // an error exists
+                    // user does not currently exist
                     else{
                         
-                        if let errorCode = AuthErrorCode(rawValue: error!._code){
-                            
-                            if errorCode == .wrongPassword{
-                                print()
-                            }
-                        }
+                        print(error.debugDescription + " dab")
                         
                         // creating new user
                         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                             
                             if error != nil{
+                                 
+                                print(error.debugDescription + " hello world")
                                 
                                 if let errorCode = AuthErrorCode(rawValue: error!._code){
                                     
@@ -98,22 +95,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 }
                             }
                             
+                            // no errors in creating new user
                             else{
                                 
                                 if let user = user{
-                                    
                                     if self.segmentedControl.selectedSegmentIndex == 0{
-                                        let userData = ["provider": user.user.providerID] as [String: Any]
+                                        let userData = ["provider": user.user.providerID, "email":email,"password":password] as [String: Any]
                                         
                                         DataService.instance.createFirebaseDBUser(uid: user.user.uid, userData: userData, isHelper: false)
                                     }
-                                }
-                                
-                                else{
-                                    
-                                    let userData = ["provider": user?.user.providerID as Any, "userIsHelper": true,"isHelperModeEnabled": false, "helperIsOnTrip": false] as [String: Any]
-                                    
-                                    DataService.instance.createFirebaseDBUser(uid: user!.user.uid, userData: userData, isHelper: true)
+                                        
+                                    else{
+                                        let userData = ["provider": user.user.providerID as Any, "userIsHelper": true,"isHelperModeEnabled": false, "helperIsOnTrip": false,"email":email,"password":password] as [String: Any]
+                                        
+                                        DataService.instance.createFirebaseDBUser(uid: user.user.uid, userData: userData, isHelper: true)
+                                    }
                                 }
                             }
                             
