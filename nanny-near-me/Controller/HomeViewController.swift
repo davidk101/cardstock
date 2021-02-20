@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var actionBtn: RoundedShadowButton!
     @IBOutlet weak var destinationTextField: UITextField!
+    @IBOutlet weak var centerMapButton: UIButton!
     
     var delegate: CenterVCDelegate?
     
@@ -67,6 +68,7 @@ class HomeViewController: UIViewController {
     @IBAction func centerMapBtnWasPressed(_ sender: Any) {
         
         centerMapOnUserLocation()
+        centerMapButton.fadeTo(alphaValue: 0.0, withDuration: 0.2) // removes button when centred
     }
     
     @IBAction func actionBtnWasPressed(_ sender: Any) {
@@ -129,6 +131,12 @@ extension HomeViewController: MKMapViewDelegate{
                 }
             }
         }
+    }
+    
+    // adding center map button as soon as uncentred
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        centerMapButton.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+        
     }
 }
 
