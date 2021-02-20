@@ -36,7 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if emailField.text != nil && passwordField.text != nil{
             
-            //authBtn.animateButton(shouldLoad: true, withMessage: nil)
+            authBtn.animateButton(shouldLoad: true, withMessage: nil)
             self.view.endEditing(true) // hiding keyboard
             
             if let email = emailField.text, let password = passwordField.text{ // closure: email and password fields have text
@@ -45,7 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                     
                     // logging in a currently existing user
-                    // only executed if 'user' exists
+                    // only executed if user exists
                     if error == nil{
                         
                         if let user = user{
@@ -68,18 +68,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         self.dismiss(animated: true, completion: nil) // removing LoginVC
                     }
                     
-                    // user does not currently exist
+                    // if user does not currently exist
                     else{
-                        
-                        print(error.debugDescription + " dab")
-                        
-                        // creating new user
+                                                
+                        // creating a new user
                         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                             
                             if error != nil{
-                                 
-                                print(error.debugDescription + " hello world")
-                                
+                                                                 
                                 if let errorCode = AuthErrorCode(rawValue: error!._code){
                                     
                                     switch errorCode {
@@ -95,7 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 }
                             }
                             
-                            // no errors in creating new user
+                            // if no errors in creating new user
                             else{
                                 
                                 if let user = user{
