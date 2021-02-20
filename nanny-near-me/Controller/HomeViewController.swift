@@ -142,7 +142,6 @@ extension HomeViewController: UITextFieldDelegate{
             // start position: bottom most position of screen
             tableView.frame = CGRect(x: 20, y: view.frame.height, width: view.frame.width - 40, height: view.frame.height - 170)
             tableView.layer.cornerRadius = 5.0
-            tableView.rowHeight = 60
             
             // registering a cell
             tableView.register(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
@@ -152,6 +151,7 @@ extension HomeViewController: UITextFieldDelegate{
             
             // sort of as an identifying key
             tableView.tag = 18
+            tableView.rowHeight = 70
             
             view.addSubview(tableView)
             animateTableView(shouldShow: true)
@@ -163,7 +163,6 @@ extension HomeViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == destinationTextField{
-            
             performSearch()
             // hides keyboard and removes cursor for typing
             view.endEditing(true)
@@ -194,7 +193,7 @@ extension HomeViewController: UITextFieldDelegate{
             UIView.animate(withDuration: 0.2, animations: {
                 
                 // end position: 170 units above bottom-most point
-                self.tableView.frame = CGRect(x: 20, y: 170, width: self.view.frame.width - 40, height: self.view.frame.height - 170)
+                self.tableView.frame = CGRect(x: 20, y: 230, width: self.view.frame.width - 40, height: self.view.frame.height - 170)
             })
         }
         else{
@@ -239,6 +238,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    // hides keyboard if scroll detected
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if destinationTextField.text == ""{
+            animateTableView(shouldShow: false)
+        }
     }
     
     
