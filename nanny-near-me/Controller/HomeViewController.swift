@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 class HomeViewController: UIViewController {
     
@@ -20,6 +21,8 @@ class HomeViewController: UIViewController {
     var delegate: CenterVCDelegate?
     
     var manager: CLLocationManager?
+    
+    var currentUserId = Auth.auth()?.currentUser?.uid
     
     var regionRadius: CLLocationDistance = 1000 // metre radius from current location
     
@@ -106,6 +109,31 @@ extension HomeViewController: MKMapViewDelegate{
         // error must be fixed
         //UpdateService.instance.updateUserLocation(withCoordinate: userLocation.coordinate)
         //UpdateService.instance.updateHelperLocation(withCoordindate: userLocation.coordinate)
+    }
+    
+    // visual representation of annotation object
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if let annotation = annotation as? DriverAnnotation{
+            
+            let identifer = "driver"
+            var view: MKAnnotationView
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifer)
+            view.image = UIImage(named: "driverAnnotation")
+            return view
+        }
+        
+        else if let annotation = annotation as? PassengerAnnotation{
+            
+            let identifier = "passenger"
+            var view: MKAnnotationView
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.image = UIImage(named: "currentLocationAnnotation")
+            return view
+        }
+        
+        return nil
+        
     }
     
     func performSearch(){
@@ -240,8 +268,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    // once the specified row is selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let passengerCoordinate = manager?.location?.coordinate
+        
+        // creating annotation with captured coordinate 
+        let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
+        
+        mapView.addAnnotation(PassengerAnnotation)
+        
+        animateTableView(shouldShow: false)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
