@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     
     var manager: CLLocationManager?
     
-    var currentUserId = Auth.auth()?.currentUser?.uid
+    var currentUserId = Auth.auth().currentUser?.uid
     
     var regionRadius: CLLocationDistance = 1000 // metre radius from current location
     
@@ -114,7 +114,7 @@ extension HomeViewController: MKMapViewDelegate{
     // visual representation of annotation object
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if let annotation = annotation as? DriverAnnotation{
+        /*if let annotation = annotation as? DriverAnnotation{
             
             let identifer = "driver"
             var view: MKAnnotationView
@@ -122,8 +122,9 @@ extension HomeViewController: MKMapViewDelegate{
             view.image = UIImage(named: "driverAnnotation")
             return view
         }
+        */
         
-        else if let annotation = annotation as? PassengerAnnotation{
+        if let annotation = annotation as? PassengerAnnotation{
             
             let identifier = "passenger"
             var view: MKAnnotationView
@@ -276,14 +277,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         // creating annotation with captured coordinate
         let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
         
-        mapView.addAnnotation(PassengerAnnotation)
+        //mapView.addAnnotation(PassengerAnnotation)
         
         // displays text of offical text field on destinationTextField
         destinationTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
         
         let selectedMapItem = matchingItems[indexPath.row]
         
-        // creating a new child called tripCoordinate dictionary
+        // creating a new child called tripCoordinate for current user location as dictionary
         DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate": [selectedMapItem.placemark.coordinate.latitude, selectedMapItem.placemark.coordinate.longitude]])
         
         animateTableView(shouldShow: false)

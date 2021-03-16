@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class PassengerAnnotation: NSObject, MKAnnotation{
+class PassengerAnnotation: NSObject, MKAnnotation {
 
     dynamic var coordinate: CLLocationCoordinate2D
     var key: String
