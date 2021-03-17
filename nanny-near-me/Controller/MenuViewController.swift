@@ -39,6 +39,7 @@ class MenuViewController: UIViewController {
         // checking if there is anyone logged in
         if Auth.auth().currentUser == nil{
             
+            // BUG HERE 
             userEmailLbl.text = ""
             userAccountTypeLbl.text = ""
             loginOutBtn.setTitle("Sign Up / Login", for: .normal)
