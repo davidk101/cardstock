@@ -7,9 +7,10 @@ target 'nanny-near-me' do
 
   # Pods for nanny-near-me
 
-pod 'Firebase', '= 6.15.0'
+pod 'Firebase'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'GoogleSignIn'
 
 end

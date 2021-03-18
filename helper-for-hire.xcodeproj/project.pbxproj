@@ -190,6 +190,7 @@
 				9884F92B25A283D30022FD9A /* Frameworks */,
 				9884F92C25A283D30022FD9A /* Resources */,
 				3BD93FAC09DFFE16F962EA6F /* [CP] Embed Pods Frameworks */,
+				BFBD724676B04517014AB85E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,7 +216,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9884F92925A283D30022FD9A /* Build configuration list for PBXProject "nanny-near-me" */;
+			buildConfigurationList = 9884F92925A283D30022FD9A /* Build configuration list for PBXProject "helper-for-hire" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -285,6 +286,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFBD724676B04517014AB85E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nanny-near-me/Pods-nanny-near-me-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -487,7 +505,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9884F92925A283D30022FD9A /* Build configuration list for PBXProject "nanny-near-me" */ = {
+		9884F92925A283D30022FD9A /* Build configuration list for PBXProject "helper-for-hire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9884F94025A283D60022FD9A /* Debug */,
